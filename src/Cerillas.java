@@ -1,36 +1,44 @@
 import java.util.Scanner;
 
-/**
- * Falta saber cuando acaba el bucle
- * No se ha testeado en el juez
- */
 
 public class Cerillas {
 
+	/**
+	 * Se ha añadido lectura en bucle infitio, falta testear en el juez
+	 */
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int num ,max;
-		boolean sortida = false;
-		while(!sortida){
-			//Leemos los numeros
+		//Bucle infinito mientras nos metan datos
+		while(casoDePrueba(scan)){
+			//recumeramos valores
 			num = Integer.parseInt(scan.next());
 			max = Integer.parseInt(scan.next());
-			//Primer caso: el numero de cerillas es igual al numero maximo de retirada o al numero maximo +1
+			//Si las cerillas que quedan son iguales al maximo o al maximo+1 recogemos el maximo -1
 			if(num==max || num==max+1){
 				System.out.println(num-1);
-			} else if(num>max){ //Segundo caso, el numero de cerillas es mas grande que el numero maximo
+			//Si quedan mas de las que podemos coger recogemos 1
+			} else if(num>max){
 				System.out.println(1);
-			} else {//Tercer caso, el numero de cerillas es menos que el numero maximo
-				if(num==1){//Si solo queda 1 perdemos
+			//Si quedan menos de las que podemos coger comprovamos cuantas quedan
+			} else {
+				//Si solo queda 1 perdemos
+				if(num==1){
 					System.out.println("PIERDO");
-					sortida=true;
-				} else {//Si quedan mas retiramos todas menos 1
+				} else {
+				//Si queda mas de una recogemos todas menos una
 					System.out.println(num-1);
 				}
 			}
 		}
-		
-
 	}
-
+	//Metodo para comprovar si hay un valor que recoger
+	public static boolean casoDePrueba(Scanner scan) {
+		if (!scan.hasNext()){
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
+
