@@ -1,44 +1,36 @@
 import java.util.Scanner;
 
-
 public class Cerillas {
 
 	/**
-	 * Se ha añadido lectura en bucle infitio, falta testear en el juez
+	 * Da RUN-ERROR
+	 * Tanto en lectura infinita como en lectura hasta perder da error
+	 * Estaria bien saber el caso en el que falla
 	 */
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int num ,max;
-		//Bucle infinito mientras nos metan datos
-		while(casoDePrueba(scan)){
-			//recumeramos valores
+		int num, max;
+		boolean sortida = false;
+		// Bucle infinito mientras nos metan datos
+		while (!sortida) {
+			// recumeramos valores
 			num = Integer.parseInt(scan.next());
 			max = Integer.parseInt(scan.next());
-			//Si las cerillas que quedan son iguales al maximo o al maximo+1 recogemos el maximo -1
-			if(num==max || num==max+1){
-				System.out.println(num-1);
-			//Si quedan mas de las que podemos coger recogemos 1
-			} else if(num>max){
-				System.out.println(1);
-			//Si quedan menos de las que podemos coger comprovamos cuantas quedan
+			//Si solo queda una perdemos
+			if (num == 1) {
+				System.out.println("PIERDO");
+				sortida = true;
 			} else {
-				//Si solo queda 1 perdemos
-				if(num==1){
-					System.out.println("PIERDO");
+				//Si quedan mas que el maximo + 1 retiramos solo 1
+				if (num > max + 1) {
+					System.out.println(1);
+				//Si quedan el maximo + 1 o menos retiramos todas menos 1
 				} else {
-				//Si queda mas de una recogemos todas menos una
-					System.out.println(num-1);
+					System.out.println(num - 1);
 				}
 			}
 		}
+		scan.close();
 	}
-	//Metodo para comprovar si hay un valor que recoger
-	public static boolean casoDePrueba(Scanner scan) {
-		if (!scan.hasNext()){
-			return false;
-		} else {
-			return true;
-		}
-	}
-}
 
+}
