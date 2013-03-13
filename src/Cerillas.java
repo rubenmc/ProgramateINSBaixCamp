@@ -11,7 +11,7 @@ public class Cerillas {
 		while(keyboard.hasNextInt()){ //Mientras keden datos
 			cerillas = keyboard.nextInt(); //leemos cerillas totales
 			mano = keyboard.nextInt(); //leemos cerillas que podemos quitar
-			result = cerillas - calcul(cerillas, mano);
+			result = cerillas - calcul(cerillas, mano); //Restamos del total el calculo
 			if (result == 0)
 				System.out.println("PIERDO");
 			else
